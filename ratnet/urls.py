@@ -1,20 +1,9 @@
 from django.urls import path
-from .views import LoginsList, LoginsAdd, LoginsEdit, LoginsDetail, LoginsDelete, LoginsChangeLog, LoginsBulkEditView, LoginsBulkDeleteView, InventoryList, InventoryDetail, InventoryAdd, StorageAdd, StorageList, StorageDetail, StorageEdit, InventoryDelete
-from .models import DirtySecrets
+from .views import InventoryList, InventoryDetail, InventoryAdd, StorageAdd, StorageList, StorageDetail, StorageEdit, InventoryDelete
 
-app_name = "ratnet"
+app_name = "greennet"
 
 urlpatterns = [
-    path("dirtysecrets/<int:pk>/edit", LoginsEdit.as_view(), name="dirtysecrets_edit"),
-    path("dirtysecrets/<int:pk>/delete", LoginsDelete.as_view(), name="dirtysecrets_delete"),
-    path("dirtysecrets/<int:pk>/changelog/", LoginsChangeLog.as_view(), name="dirtysecrets_changelog", kwargs={"model": DirtySecrets}),
-    path("dirtysecrets/<int:pk>/", LoginsDetail.as_view(), name="dirtysecrets_detail"),
-    path("dirtysecrets/add/", LoginsAdd.as_view(), name="dirtysecrets_add"),
-    path('dirtysecrets/edit/', LoginsBulkEditView.as_view(), name='dirtysecrets_bulk_edit'),
-    path('dirtysecrets/delete/', LoginsBulkDeleteView.as_view(), name='dirtysecrets_bulk_delete'),
-    path("dirtysecrets/", LoginsList.as_view(), name="dirtysecrets_list"),
-    path("dirtysecrets", LoginsList.as_view(), name="dirtysecrets"),
-
     path("inventory/<int:pk>/", InventoryDetail.as_view(), name="inventory_detail"),
     path("inventory", InventoryList.as_view(), name="inventory"),
     path("inventory/", InventoryList.as_view(), name="inventory_list"),
