@@ -1,18 +1,6 @@
 from rest_framework import serializers
 from netbox.api.serializers import NetBoxModelSerializer
-from ..models import DirtySecrets, Inventory, Storage
-
-class DirtySecretsSerializer(NetBoxModelSerializer):
-    class Meta:
-        model = DirtySecrets
-        fields = [
-            'id',
-            'login_name',
-            'login_created_date',
-            'login_work_group',
-            'login_comment',
-            'login_encrypted_password',
-        ]
+from ..models import Inventory, Storage
 
 class InventorySerializer(NetBoxModelSerializer):
     class Meta:
@@ -29,7 +17,7 @@ class InventorySerializer(NetBoxModelSerializer):
 
 class StorageSerializer(NetBoxModelSerializer):
     url = serializers.HyperlinkedIdentityField(
-        view_name='plugins-api:ratnet-api:storage-detail'
+        view_name='plugins-api:greennet-api:storage-detail'
     )
 
     class Meta:
@@ -51,9 +39,3 @@ class StorageSerializer(NetBoxModelSerializer):
 
     def get_display(self, obj):
         return str(obj)
-
-    def to_representation(self, instance):
-        """Debug what's being sent in API response"""
-        data = super().to_representation(instance)
-        print(f"DEBUG Serializer output for {instance}: {data}")
-        return data
