@@ -1,5 +1,5 @@
 from netbox.api.viewsets import NetBoxModelViewSet
-from ..models import DirtySecrets, Inventory, Storage
+from ..models import Inventory, Storage
 from .serializers import StorageSerializer
 
 class StorageViewSet(NetBoxModelViewSet):
