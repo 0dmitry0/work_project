@@ -1,0 +1,46 @@
+{% extends 'generic/object.html' %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <h5 class="card-header">
+                Selected storage
+            </h5>
+            <div class="card-body">
+                <table class="table table-hover attr-table">
+                    <tr>
+                        <td>Storage name</td>
+                        <td>{{ storage_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Inside storage</td>
+                        <td>{{ number_value }} items</td>
+                    </tr>
+                    <tr>
+                        <td>Comment</td>
+                        <td>{{ storage_comment }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+	<div class="card">
+            <h5 class="card-header">
+                Related Objects
+            </h5>
+            <div class="card-body">
+                <table class="table table-hover attr-table">
+                    <tr>
+                        <td>
+                        	{% for i in inventory %}
+  							[<a href="{{ i.get_absolute_url }}">{{i.inventory_name}}</a> with {{i.inventory_status}}: {{i.inventory_amount}}] <br>
+							{% endfor %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+	</div>
+</div>
+{% endblock %}
