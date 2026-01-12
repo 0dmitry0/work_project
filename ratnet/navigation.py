@@ -10,15 +10,11 @@ else:
 
 menu_items = (
         PluginMenuItem(
-        link="plugins:ratnet:dirtysecrets",
-        link_text="Dirty secrets",
+        link="plugins:greennet:inventory",
+        link_text="GreenNet Inventory",
     ),
         PluginMenuItem(
-        link="plugins:ratnet:inventory",
-        link_text="Ratnet Inventory",
-    ),
-        PluginMenuItem(
-        link="plugins:ratnet:storage",
-        link_text="Ratnet Storage",
+        link="plugins:greennet:storage",
+        link_text="GreenNet Storage",
     ),
 )
