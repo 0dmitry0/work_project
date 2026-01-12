@@ -4,44 +4,6 @@ from netbox.models import NetBoxModel
 from django.contrib.postgres.fields import ArrayField
 from tenancy.models.contacts import ContactGroup
 
-class DirtySecrets(NetBoxModel):
-
-    login_name = models.TextField(
-        default=None,
-        max_length=300
-    )
-    login_created_date = models.TextField(
-        default=None,
-        max_length=300
-    )
-
-    login_work_group = models.TextField(
-        default=None,
-        max_length=300
-    )
-
-    login_comment = models.TextField(
-        default=None,
-        max_length=300
-    )
-    login_encrypted_password = models.TextField(
-        default=None,
-        max_length=300
-    )
-
-    class Meta:
-        ordering = ('login_name',)
-
-    def __str__(self):
-        return f"{self.login_name}"
-    
-    def get_absolute_url(self):
-        return reverse("plugins:ratnet:dirtysecrets_detail", args=[self.pk])
-
-    def get_changelog_url(self):
-        return reverse("plugins:ratnet:dirtysecrets_changelog", args=[self.pk])
-
-
 class Storage(NetBoxModel):
 
     storage_name = models.TextField(
@@ -61,10 +23,10 @@ class Storage(NetBoxModel):
         return f"{self.storage_name}"
 
     def get_absolute_url(self):
-        return reverse("plugins:ratnet:storage_detail", args=[self.pk])
+        return reverse("plugins:greennet:storage_detail", args=[self.pk])
 
     def get_edit_url(self):
-        return reverse("plugins:ratnet:storage_edit", args=[self.pk])
+        return reverse("plugins:greennet:storage_edit", args=[self.pk])
 
 
 class Inventory(NetBoxModel):
@@ -85,13 +47,7 @@ class Inventory(NetBoxModel):
         blank=True,
         null=True
     )
-#    inventory_device_usage = models.ForeignKey(
-#        to='dcim.Device',
-#        on_delete=models.PROTECT,
-#        related_name='+',
-#        blank=True,
-#        null=True
-#    )
+
     inventory_comment = models.TextField(
         default=None,
         max_length=300,
@@ -131,7 +87,7 @@ class Inventory(NetBoxModel):
         return f"{self.inventory_name}"
 
     def get_absolute_url(self):
-        return reverse("plugins:ratnet:inventory_detail", args=[self.pk])
+        return reverse("plugins:greennet:inventory_detail", args=[self.pk])
 
     def get_edit_url(self):
-        return reverse("plugins:ratnet:inventory_edit", args=[self.pk])
+        return reverse("plugins:greennet:inventory_edit", args=[self.pk])
