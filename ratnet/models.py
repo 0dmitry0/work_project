@@ -30,7 +30,6 @@ class Storage(NetBoxModel):
 
 
 class Inventory(NetBoxModel):
-
     inventory_name = models.TextField(
         default=None,
         max_length=300
@@ -41,13 +40,6 @@ class Inventory(NetBoxModel):
         blank=True,
         null=True
     )
-    inventory_number = models.TextField(
-        default=None,
-        max_length=300,
-        blank=True,
-        null=True
-    )
-
     inventory_comment = models.TextField(
         default=None,
         max_length=300,
