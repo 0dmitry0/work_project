@@ -1,12 +1,10 @@
 from netbox.search import SearchIndex, register_search
-from .models import DirtySecrets
+from .models import Inventory
 
 @register_search
-class DirtySecretsIndex(SearchIndex):
-    model = DirtySecrets
+class GreenNetIndex(SearchIndex):
+    model = Inventory
     fields = (
-        ("login_name", 100),
-        ("login_work_group", 50),
-        ("login_comment", 25),
+        ("inventory_name", 100),
     )
-    display_attrs = ['login_name', 'login_work_group', 'login_comment']
+    display_attrs = ['login_name']
