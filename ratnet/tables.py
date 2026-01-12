@@ -1,40 +1,13 @@
 import django_tables2 as tables
 from netbox.tables import NetBoxTable, columns
-from .models import DirtySecrets, Inventory, Storage
+from .models import Inventory, Storage
 import django_tables2 as tables
 from django.urls import reverse
-
-class DirtySecretsTable(NetBoxTable):
-
-    id = tables.LinkColumn(
-        "plugins:ratnet:dirtysecrets_detail",  # URL name of your detail view
-        args=[tables.A("pk")],                 # Pass the object's PK
-        verbose_name="ID"
-    )
-
-    pk = columns.ToggleColumn(
-        visible=True,)
-
-    login_name = tables.LinkColumn(
-        "plugins:ratnet:dirtysecrets_detail",  # URL name of your detail view
-        args=[tables.A("pk")],                 # Pass the object's PK
-        verbose_name="login_name"
-    )
-
-    class Meta(NetBoxTable.Meta):
-        model = DirtySecrets
-        fields = (
-            "login_name",
-            "login_work_group",
-            "login_created_date",
-            "login_comment",
-        )
-
 
 class InventoryTable(NetBoxTable):
 
     inventory_name = tables.LinkColumn(
-        "plugins:ratnet:inventory_detail",
+        "plugins:greennet:inventory_detail",
         args=[tables.A("pk")],
         verbose_name="inventory name"
     )
@@ -52,7 +25,7 @@ class InventoryTable(NetBoxTable):
 class StorageTable(NetBoxTable):
     
     id = tables.LinkColumn(
-        "plugins:ratnet:storage_detail",
+        "plugins:greennet:storage_detail",
         args=[tables.A("pk")],
         verbose_name="ID"
     )
